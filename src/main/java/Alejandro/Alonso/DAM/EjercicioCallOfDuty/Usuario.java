@@ -59,5 +59,19 @@ public class Usuario {
 		return "Usuario [nombre=" + nombre + ", espaciosMochila=" + espaciosMochila + ", armaPrincipal=" + armaPrincipal
 				+ ", armaSecundaria=" + armaSecundaria + ", accesorios=" + accesorios + "]";
 	}
+
+	public void verArmamento() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void verEquipamiento() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	
+	
 	
 }
