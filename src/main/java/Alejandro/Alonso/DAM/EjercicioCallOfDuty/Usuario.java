@@ -61,17 +61,31 @@ public class Usuario {
 	}
 
 	public void verArmamento() {
-		// TODO Auto-generated method stub
+		System.out.println("Armamento del usuario " + nombre + ":");
 		
+		if (armaPrincipal != null) {
+			System.out.println("Arma Principal: " + armaPrincipal);
+		} else {
+			System.out.println("Arma Principal: No asignada");
+		}
+		
+		if (armaSecundaria != null) {
+			System.out.println("Arma Secundaria: " + armaSecundaria);
+		} else {
+			System.out.println("Arma Secundaria: No asignada");
+		}
 	}
 
 	public void verEquipamiento() {
-		// TODO Auto-generated method stub
+		System.out.println("Equipamiento del usuario " + nombre + ":");
 		
+		if (accesorios.isEmpty()) {
+			System.out.println("No tiene accesorios equipados");
+		} else {
+			System.out.println("Accesorios equipados:");
+			for (Accesorios accesorio : accesorios) {
+				System.out.println("- " + accesorio);
+			}
+		}
 	}
-
-
-	
-	
-	
 }
