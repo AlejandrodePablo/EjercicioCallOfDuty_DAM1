@@ -18,6 +18,12 @@ public class Usuario {
 		this.espaciosMochila = espaciosMochila;
 		this.accesorios = new ArrayList<>();
 	}
+	
+	public Usuario() {
+		this.nombre = nombre;
+		this.espaciosMochila = espaciosMochila;
+		this.accesorios = new ArrayList<>();
+	}
 
 	//Getter and Setter
 	public String getNombre() {
