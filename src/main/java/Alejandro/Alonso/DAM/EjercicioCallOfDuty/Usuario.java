@@ -1,10 +1,11 @@
 package Alejandro.Alonso.DAM.EjercicioCallOfDuty;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Usuario {
 	
-	private String nombre;
+	private static String nombre;
 	private int espaciosMochila;
 	private Armas armaPrincipal;
 	private Armas armaSecundaria;
@@ -64,6 +65,12 @@ public class Usuario {
 	public String toString() {
 		return "Usuario [nombre=" + nombre + ", espaciosMochila=" + espaciosMochila + ", armaPrincipal=" + armaPrincipal
 				+ ", armaSecundaria=" + armaSecundaria + ", accesorios=" + accesorios + "]";
+	}
+	
+	public static void crearUsario() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Introduce el nombre de usuario que te gustaria tener");
+		nombre = sc.nextLine();
 	}
 	
 }

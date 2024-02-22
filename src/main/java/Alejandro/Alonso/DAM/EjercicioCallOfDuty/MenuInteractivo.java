@@ -15,11 +15,15 @@ public class MenuInteractivo {
 
     public static void main(String[] args) {
         int opcion;
+        
+        //Creacion del usuario 
+    	Usuario.crearUsario();
 
         do {
+        	
             System.out.println("----- Menú Interactivo -----");
             System.out.println("1. Ver armamento");
-            System.out.println("2. Equipar accesorio a arma");
+            System.out.println("2. Equipar accesorio");
             System.out.println("3. Cambiar arma principal");
             System.out.println("4. Cambiar arma secundaria");
             System.out.println("5. Agregar arma");
@@ -34,45 +38,28 @@ public class MenuInteractivo {
                     Armas.mostrarArmamento();
                     break;
                 case 2:
-                    usuario.verEquipamiento();
+                    inventarioController.mostrarAccesoriosDisponibles();
+                    System.out.print("Seleccione el accesorio que desea equipar (Ingrese el número): ");
+                    int indiceAccesorio = scanner.nextInt();
+                    inventarioController.equiparAccesorio(indiceAccesorio);
                     break;
                 case 3:
-                    equiparAccesorioAArma();
                     break;
                 case 4:
-                    cambiarArmaPrincipal();
                     break;
                 case 5:
-                    cambiarArmaSecundaria();
                     break;
                 case 6:
-                    inventarioController.agregarArma();
                     break;
                 case 7:
-                    inventarioController.modificarArma();
                     break;
                 case 8:
-                    inventarioController.eliminarArma();
-                    break;
-                case 9:
                     System.out.println("Saliendo del programa...");
                     break;
                 default:
                     System.out.println("Opción no válida. Inténtelo de nuevo.");
             }
+            System.out.println();
         } while (opcion != 9);
-    }
-
-    private static void equiparAccesorioAArma() {
-        // Implementar lógica para equipar accesorio a arma
-    }
-
-    private static void cambiarArmaPrincipal() {
-        // Implementar lógica para cambiar arma principal
-    }
-
-    private static void cambiarArmaSecundaria() {
-        // Implementar lógica para cambiar arma secundaria
-	
     }
 }
