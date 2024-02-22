@@ -6,8 +6,8 @@ public class MenuInteractivo {
 
     private static Scanner scanner = new Scanner(System.in);
     private static Usuario usuario = new Usuario(null, 0);
-    private static Armas arma1 = new Armas(null, 0);
-    private static  Armas arma2  = new Armas(null, 0);
+    private static Armas arma1 = new Armas(null, null, 0);
+    private static  Armas arma2  = new Armas(null, null, 0);
     private static ArmasPrincipales armasPrincipales1  = (ArmasPrincipales) arma1;
     private static  ArmasSecundarias  ArmasSecundarias2  = (ArmasSecundarias) arma2;
     
