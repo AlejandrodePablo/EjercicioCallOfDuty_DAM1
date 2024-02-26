@@ -13,7 +13,7 @@ public class Armas {
 	
 	private static final String[] NOMBREDISPONIBLES = { "Pistola", "Rifle", "Escopeta", "Revólver", "Subfusil",
 			"Francotirador", "Ballesta", "Granada", "Lanzacohetes", "Arco", "Machete", "Cuchillo", "Espada",
-			"Fusil de Asalto", "Cañón", "Maza", "Hacha", "Lanza", "Estrella Ninja", "Bomba" };
+			"Fusil de Asalto", "Cañón", "Maza", "Hacha", "Lanza", "Estrella Ninja", "Bomba", "Hacha" };
 	
 	private static final String[] CALIBRESDISPONIBLES = { "9mm", "5.56mm", "7.62mm", ".45ACP", "12 Gauge", "7.62x39mm",
 			"5.45x39mm", ".357 Magnum", ".44 Magnum", "10mm Auto", "20 Gauge", ".308 Winchester", ".50 BMG", ".22LR",
