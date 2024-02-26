@@ -7,5 +7,7 @@ public class ArmasSecundarias extends Armas{
 		// TODO Auto-generated constructor stub
 	}
 
+	
+
 
 }

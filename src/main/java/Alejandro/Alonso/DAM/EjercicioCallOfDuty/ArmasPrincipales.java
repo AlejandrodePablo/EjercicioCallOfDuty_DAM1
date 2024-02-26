@@ -7,6 +7,8 @@ public class ArmasPrincipales extends Armas{
 		// TODO Auto-generated constructor stub
 	}
 
+	
+
 
 
 
