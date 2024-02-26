@@ -4,8 +4,8 @@ public class InventarioController {
 	public static void mostrarInventario(Usuario usuario) {
 	        System.err.println("Inventario de " + usuario.nombre + ":");
 	        System.out.println("Espacio en mochila: " + usuario.espacioMochila);
-	        System.out.println("Arma Principal: " + (usuario.armaPrincipal));
-	        System.out.println("Arma Secundaria: " + (usuario.armaSecundaria ));
+	        System.out.println("Arma Principal: " + (usuario.armaPrincipal != null ? usuario.armaPrincipal.nombre : "Ninguna"));
+	        System.out.println("Arma Secundaria: " + (usuario.armaSecundaria != null ? usuario.armaSecundaria.nombre : "Ninguna"));
 
 	        System.out.println("Accesorios:");
 	        for (Accesorios accesorio : usuario.accesorios) {
