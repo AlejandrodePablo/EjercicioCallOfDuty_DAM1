@@ -1,63 +1,31 @@
 package Alejandro.Alonso.DAM.EjercicioCallOfDuty;
 
-import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Usuario {
-	
-	private String nombre;
-	private int espaciosMochila;
-	private Armas armaPrincipal;
-	private Armas armaSecundaria;
-	private ArrayList<Accesorios> accesorios;
-	
-	
-	
-	
-	public Usuario(String nombre, int espaciosMochila) {
-		this.nombre = nombre;
-		this.espaciosMochila = espaciosMochila;
-		this.accesorios = new ArrayList<>();
-	}
+	//Declaracion de atributos
+	private static String nombre;
 
-	//Getter and Setter
-	public String getNombre() {
+	//Getters and Setters
+	public static String getNombre() {
 		return nombre;
 	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	public int getEspaciosMochila() {
-		return espaciosMochila;
-	}
-	public void setEspaciosMochila(int espaciosMochila) {
-		this.espaciosMochila = espaciosMochila;
-	}
-	public Armas getArmaPrincipal() {
-		return armaPrincipal;
-	}
-	public void setArmaPrincipal(Armas armaPrincipal) {
-		this.armaPrincipal = armaPrincipal;
-	}
-	public Armas getArmaSecundaria() {
-		return armaSecundaria;
-	}
-	public void setArmaSecundaria(Armas armaSecundaria) {
-		this.armaSecundaria = armaSecundaria;
+
+	public static void setNombre(String nombre) {
+		Usuario.nombre = nombre;
 	}
 	
-	public ArrayList<Accesorios> getAccesorios() {
-		return accesorios;
+	//Metodos
+	
+	//Metodo para crear al usuario
+	public static void crearUsuario() {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("----Creacion del usuario----");
+		System.out.print("Introduce el nombre de tu usuario--->");
+		nombre = sc.nextLine();
 	}
-
-	public void setAccesorios(ArrayList<Accesorios> accesorios) {
-		this.accesorios = accesorios;
-	}
-
-	//toString
-	@Override
-	public String toString() {
-		return "Usuario [nombre=" + nombre + ", espaciosMochila=" + espaciosMochila + ", armaPrincipal=" + armaPrincipal
-				+ ", armaSecundaria=" + armaSecundaria + ", accesorios=" + accesorios + "]";
-	}
+	
+	
 	
 }
