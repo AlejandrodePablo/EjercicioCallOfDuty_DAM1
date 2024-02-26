@@ -1,9 +1,7 @@
 package Alejandro.Alonso.DAM.EjercicioCallOfDuty;
 
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
 public class Armas {
@@ -14,9 +12,7 @@ public class Armas {
 	private Accesorios accesorios;
 	private static String calibre;
 	private Armas[][] arma = new Armas[ARMASBASE][3];
-    private static List<Accesorios> accesoriosEquipados;
 	private static final Random random = new Random();
-
 
 	private static final String[] ARMAPRINCIPAL = {"Rifle", "Escopeta", "Francotirador", "Subfusil"};
 	
@@ -31,8 +27,6 @@ public class Armas {
 		this.secundaria=secundaria;
 		this.calibre = calibre2;
 		this.peso = peso;
-        this.accesoriosEquipados = new ArrayList<>();
-
 	}
 	
 	public Armas() {
@@ -41,6 +35,7 @@ public class Armas {
 		this.calibre = calibre;
 		this.peso = peso;
 	}
+	
 
 	public String getPrincipal() {
 		return principal;
@@ -59,14 +54,14 @@ public class Armas {
 	}
 
 
-	public int getPeso() {
-		return peso;
-	}
+		public int getPeso() {
+			return peso;
+		}
 
-	public void setPeso(int peso) {
-		this.peso = peso;
-	}
-	
+
+		public void setPeso(int peso) {
+			this.peso = peso;
+		}
 	public String getCalibre() {
 		return calibre;
 	}
@@ -75,29 +70,13 @@ public class Armas {
 		this.calibre = calibre;
 	}
 	
-	 public List<Accesorios> getAccesoriosEquipados() {
-		 return accesoriosEquipados;
-	}
-
-	 
 	
 
 	@Override
 	public String toString() {
-        return "Armas [nombre=" + principal + ", secundaria=" + secundaria + ", peso=" + peso + ", calibre=" + calibre
-                + ", accesoriosEquipados=" + accesoriosEquipados + "]";
-    }
-	
-	
-	public void setAccesoriosEquipados(List<Accesorios> accesoriosEquipados) {
-	      this.accesoriosEquipados = accesoriosEquipados;
+		return "Armas [nombre=" + principal + "secundaria=" +secundaria + ", peso=" + peso + ", calibre=" + calibre + ", arma=" + Arrays.toString(arma)
+				+ "]";
 	}
-
-    // Método para añadir un accesorio equipado
-    public void equiparAccesorio(Accesorios accesorio) {
-        accesoriosEquipados.add(accesorio);
-    }
-
 
 	public static Armas obtenerArmaAleatoria() {
 		String principal = ARMAPRINCIPAL[random.nextInt(ARMAPRINCIPAL.length)];
@@ -120,19 +99,11 @@ public class Armas {
 	}
 	
     //Metodo mostrar armamento
-	public static void mostrarArmamento(){
-	    System.out.println("La arma principal es: " + principal);
-	    System.out.println("La arma secundaria es: " + secundaria);
-	    System.out.println("El peso total del inventario es: " + peso);
-	    System.out.println("El calibre del arma principal es: " + calibre);
-
-	    // Mostrar accesorios equipados
-	    if (!accesoriosEquipados.isEmpty()) {
-	        System.out.println("Accesorios Equipados:");
-	        for (Accesorios accesorio : accesoriosEquipados) {
-	            System.out.println("- " + accesorio.getNombre());
-	        }
+	 public static void mostrarArmamento(){
+	    	System.out.println("La arma principal es: " +principal);
+	    	System.out.println("La arma secundaria es: " +secundaria);
+	    	System.out.println("El peso total del inventario es: " +peso);
+	    	System.out.println("El calibre del armaPrincipal es: " +calibre);
 	    }
-	}
-}
 
+}
