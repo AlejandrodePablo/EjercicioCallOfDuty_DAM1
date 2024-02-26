@@ -31,33 +31,10 @@ public class MenuInteractivo {
 	                    InventarioController.mostrarInventario(usuario);
 	                    break;
 	                case 2:
-	                    System.out.print("Ingrese el nombre del arma: ");
-	                    String nombreArma = scanner.next();
-	                    System.out.print("Ingrese el peso del arma: ");
-	                    int pesoArma = scanner.nextInt();
-	                    System.out.print("¿Es un arma principal o secundaria? (P/S): ");
-	                    char tipoArma = scanner.next().charAt(0);
-
-	                    Armas arma;
-	                    if (tipoArma == 'P') {
-	                        arma = new ArmaPrincipal(nombreArma, pesoArma);
-	                    } else if (tipoArma == 'S') {
-	                        arma = new ArmaSecundaria(nombreArma, pesoArma);
-	                    } else {
-	                        System.out.println("Opción no válida.");
-	                        continue;
-	                    }
-
-	                    InventarioController.añadirArma(usuario, arma);
+	                    Armas arma = InventarioController.crearArma(scanner);
 	                    break;
 	                case 3:
-	                    System.out.print("Ingrese el nombre del accesorio: ");
-	                    String nombreAccesorio = scanner.next();
-	                    System.out.print("Ingrese el peso del accesorio: ");
-	                    int pesoAccesorio = scanner.nextInt();
-
-	                    Accesorios accesorio = new Accesorios(nombreAccesorio, pesoAccesorio);
-	                    InventarioController.equiparAccesorio(usuario, accesorio);
+	                	Accesorios accesorio = InventarioController.crearAccesorio(scanner);
 	                    break;
 	                case 4:
 	                    System.out.print("Ingrese el nombre del accesorio a desequipar: ");
