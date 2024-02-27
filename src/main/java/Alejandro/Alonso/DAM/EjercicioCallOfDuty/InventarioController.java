@@ -3,6 +3,7 @@ package Alejandro.Alonso.DAM.EjercicioCallOfDuty;
 import java.util.Scanner;
 
 public class InventarioController {
+	
 	public static void mostrarInventario(Usuario usuario) {
 	        System.err.println("Inventario de " + usuario.nombre + ":");
 	        System.out.println("Espacio en mochila: " + usuario.espacioMochila);
