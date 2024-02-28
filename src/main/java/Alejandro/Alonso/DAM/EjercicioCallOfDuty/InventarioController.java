@@ -1,6 +1,9 @@
 package Alejandro.Alonso.DAM.EjercicioCallOfDuty;
 
+import java.util.Scanner;
+
 public class InventarioController {
+	
 	public static void mostrarInventario(Usuario usuario) {
 	        System.err.println("Inventario de " + usuario.nombre + ":");
 	        System.out.println("Espacio en mochila: " + usuario.espacioMochila);
@@ -35,6 +38,37 @@ public class InventarioController {
 	        System.out.println("No puedes llevar más de 3 accesorios.");
 	    }
 
+	   public static Accesorios crearAccesorio(Scanner scanner) {
+	        System.out.print("Ingrese el nombre del accesorio: ");
+	        String nombreAccesorio = scanner.next();
+	        System.out.print("Ingrese el peso del accesorio: ");
+	        int pesoAccesorio = scanner.nextInt();
+
+	        return new Accesorios (nombreAccesorio, pesoAccesorio);
+	    }
+	   
+	   
+	   public static Armas crearArma(Scanner scanner) {
+	        System.out.print("Ingrese el nombre del arma: ");
+	        String nombreArma = scanner.next();
+	        System.out.print("Ingrese el peso del arma: ");
+	        int pesoArma = scanner.nextInt();
+	        System.out.print("¿Es un arma principal o secundaria? (P/S): ");
+	        char tipoArma = scanner.next().charAt(0);
+
+	        Armas arma;
+
+	        if (tipoArma == 'P') {
+	            arma = new ArmaPrincipal(nombreArma, pesoArma);
+	        } else if (tipoArma == 'S') {
+	            arma = new ArmaSecundaria(nombreArma, pesoArma);
+	        } else {
+	            System.out.println("Opción no válida.");
+	            return null;  	        }
+
+	        return arma;
+	    }
+	   
 	    public static void desequiparAccesorio(Usuario usuario, String nombreAccesorio) {
 	        for (int i = 0; i < usuario.accesorios.length; i++) {
 	            if (usuario.accesorios[i] != null && usuario.accesorios[i].nombre.equals(nombreAccesorio)) {
