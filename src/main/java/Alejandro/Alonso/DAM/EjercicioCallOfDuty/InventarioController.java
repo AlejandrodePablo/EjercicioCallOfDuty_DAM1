@@ -8,29 +8,12 @@ public class InventarioController {
         System.out.println("Inventario de " + usuario.nombre + ":");
         System.out.println("Espacio en mochila: " + usuario.espacioMochila);
 
-<<<<<<< Updated upstream
-	        System.out.println("Accesorios:");
-	        for (Accesorios accesorio : usuario.accesorios) {
-	            if (accesorio != null) {
-	                System.out.println("- " + accesorio.nombre);
-	            }
-	        } 
-	        System.out.println("Equipamiento del usuario: ");
-	        for (Equipamiento equipamiento : usuario.equipamiento) {
-	            if (equipamiento != null) {
-	                System.out.println("- " + equipamiento.nombreEquipamiento);
-	                System.out.println("- " + equipamiento.pesoEquipamiento);
-	            }
-	        } 
-	    }
-=======
         System.out.println("\nArmas Principales:");
         for (ArmaPrincipal armaPrincipal : usuario.armasPrincipales) {
             if (armaPrincipal != null) {
                 System.out.println("Nombre: " + armaPrincipal.nombre + ", Peso: " + armaPrincipal.peso);
             }
         }
->>>>>>> Stashed changes
 
         System.out.println("\nArmas Secundarias:");
         for (ArmaSecundaria armaSecundaria : usuario.armasSecundarias) {
@@ -55,28 +38,6 @@ public class InventarioController {
         System.out.print("¿Es un arma principal o secundaria? (P/S): ");
         char tipoArma = scanner.next().charAt(0);
 
-<<<<<<< Updated upstream
-	        return new Accesorios (nombreAccesorio, pesoAccesorio);
-	    }
-	   
-	   
-	   public static Equipamiento crearEquipamiento(Scanner scanner) {
-	        System.out.print("Ingrese el nombre del Equipamiento: ");
-	        String nombreEquipamineto = scanner.next();
-	        System.out.print("Ingrese el peso del Equipamiento: ");
-	        int pesoEquipamineto = scanner.nextInt();
-	        return new Equipamiento  (nombreEquipamineto, pesoEquipamineto);
-	    }
-	   
-	   
-	   public static Armas crearArma(Scanner scanner) {
-	        System.out.print("Ingrese el nombre del arma: ");
-	        String nombreArma = scanner.next();
-	        System.out.print("Ingrese el peso del arma: ");
-	        int pesoArma = scanner.nextInt();
-	        System.out.print("¿Es un arma principal o secundaria? (P/S): ");
-	        char tipoArma = scanner.next().charAt(0);
-=======
         if (tipoArma == 'P') {
             return new ArmaPrincipal(nombreArma, pesoArma);
         } else if (tipoArma == 'S') {
@@ -86,7 +47,6 @@ public class InventarioController {
             return null;
         }
     }
->>>>>>> Stashed changes
 
     public static Accesorios crearAccesorio(Scanner scanner) {
         System.out.print("Ingrese el nombre del accesorio: ");
@@ -97,31 +57,6 @@ public class InventarioController {
         return new Accesorios(nombreAccesorio, pesoAccesorio);
     }
 
-<<<<<<< Updated upstream
-	        return arma;
-	    }
-	   
-	    public static void desequiparAccesorio(Usuario usuario, String nombreDesEquipar) {
-	        for (int i = 0; i < usuario.accesorios.length; i++) {
-	            if (usuario.accesorios[i] != null && usuario.accesorios[i].nombre.equals(nombreDesEquipar)) {
-	                usuario.accesorios[i] = null;
-	                return;
-	            }
-	        }
-	        System.out.println("Accesorio no encontrado.");
-	    }
-	    public static void desequiparEquipamiento(Usuario usuario, String nombreEquipamiento) {
-	        for (int i = 0; i < usuario.equipamiento.length; i++) {
-	            if (usuario.equipamiento[i] != null && usuario.equipamiento[i].nombreEquipamiento.equals(nombreEquipamiento)) {
-	                usuario.equipamiento[i] = null;
-	                return;
-	            }
-	        }
-	        System.out.println("Equipamiento no encontrado.");
-	    }
-
-	
-=======
     public static void añadirArmaPrincipal(Usuario usuario, ArmaPrincipal armaPrincipal) {
         for (int i = 0; i < usuario.armasPrincipales.length; i++) {
             if (usuario.armasPrincipales[i] == null) {
@@ -165,5 +100,4 @@ public class InventarioController {
         }
         System.out.println("Accesorio no encontrado.");
     }
->>>>>>> Stashed changes
 }
