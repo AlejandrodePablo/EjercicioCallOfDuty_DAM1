@@ -22,6 +22,8 @@ public class MenuInteractivo {
 	            System.out.println("2. Añadir Arma");
 	            System.out.println("3. Equipar Accesorio");
 	            System.out.println("4. Desequipar Accesorio");
+	            System.out.println("5. Añadir Equipamiento");
+	            System.out.println("6. Eliminar Equipamiento");
 	            System.out.println("0. Salir");
 	            System.out.print("Ingrese su opción: ");
 	            opcion = scanner.nextInt();
@@ -40,6 +42,14 @@ public class MenuInteractivo {
 	                    System.out.print("Ingrese el nombre del accesorio a desequipar: ");
 	                    String nombreDesEquipar = scanner.next();
 	                    InventarioController.desequiparAccesorio(usuario, nombreDesEquipar);
+	                    break;
+	                case 5:
+	                	Equipamiento equipamineto = InventarioController.crearEquipamiento(scanner);
+	                    break;
+	                case 6:
+	                    System.out.print("Ingrese el nombre del accesorio a desequipar: ");
+	                    String nombreDesEquiparE = scanner.next();
+	                    InventarioController.desequiparEquipamiento(usuario, nombreDesEquiparE);
 	                    break;
 	                case 0:
 	                    System.out.println("¡Hasta luego!");

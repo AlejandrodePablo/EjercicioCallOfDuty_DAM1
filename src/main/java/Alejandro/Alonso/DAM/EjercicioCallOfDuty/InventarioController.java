@@ -15,7 +15,14 @@ public class InventarioController {
 	            if (accesorio != null) {
 	                System.out.println("- " + accesorio.nombre);
 	            }
-	        }
+	        } 
+	        System.out.println("Equipamiento del usuario: ");
+	        for (Equipamiento equipamiento : usuario.equipamiento) {
+	            if (equipamiento != null) {
+	                System.out.println("- " + equipamiento.nombreEquipamiento);
+	                System.out.println("- " + equipamiento.pesoEquipamiento);
+	            }
+	        } 
 	    }
 
 	   public static void añadirArma(Usuario usuario, Armas arma) {
@@ -48,6 +55,15 @@ public class InventarioController {
 	    }
 	   
 	   
+	   public static Equipamiento crearEquipamiento(Scanner scanner) {
+	        System.out.print("Ingrese el nombre del Equipamiento: ");
+	        String nombreEquipamineto = scanner.next();
+	        System.out.print("Ingrese el peso del Equipamiento: ");
+	        int pesoEquipamineto = scanner.nextInt();
+	        return new Equipamiento  (nombreEquipamineto, pesoEquipamineto);
+	    }
+	   
+	   
 	   public static Armas crearArma(Scanner scanner) {
 	        System.out.print("Ingrese el nombre del arma: ");
 	        String nombreArma = scanner.next();
@@ -69,13 +85,24 @@ public class InventarioController {
 	        return arma;
 	    }
 	   
-	    public static void desequiparAccesorio(Usuario usuario, String nombreAccesorio) {
+	    public static void desequiparAccesorio(Usuario usuario, String nombreDesEquipar) {
 	        for (int i = 0; i < usuario.accesorios.length; i++) {
-	            if (usuario.accesorios[i] != null && usuario.accesorios[i].nombre.equals(nombreAccesorio)) {
+	            if (usuario.accesorios[i] != null && usuario.accesorios[i].nombre.equals(nombreDesEquipar)) {
 	                usuario.accesorios[i] = null;
 	                return;
 	            }
 	        }
 	        System.out.println("Accesorio no encontrado.");
 	    }
+	    public static void desequiparEquipamiento(Usuario usuario, String nombreEquipamiento) {
+	        for (int i = 0; i < usuario.equipamiento.length; i++) {
+	            if (usuario.equipamiento[i] != null && usuario.equipamiento[i].nombreEquipamiento.equals(nombreEquipamiento)) {
+	                usuario.equipamiento[i] = null;
+	                return;
+	            }
+	        }
+	        System.out.println("Equipamiento no encontrado.");
+	    }
+
+	
 }

@@ -2,30 +2,29 @@ package Alejandro.Alonso.DAM.EjercicioCallOfDuty;
 
 public class Equipamiento {
 	
-	 String nombre;
-	    int peso;
+	 String nombreEquipamiento;
+	    int pesoEquipamiento;
 
-	 public Equipamiento(String nombre, int peso) {
-		 this.nombre = nombre;
-	     this.peso = peso;
+	 public Equipamiento(String Equipamiento, int pesoEquipamiento) {
+		 this.nombreEquipamiento = nombreEquipamiento;
+	     this.pesoEquipamiento = pesoEquipamiento;
 	 }
 
-	public String getNombre() {
-		return nombre;
+	public String getNombreEquipamineto() {
+		return nombreEquipamiento;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setNombreEquipamiento(String nombreEquipamiento) {
+		this.nombreEquipamiento = nombreEquipamiento;
 	}
 
-	public int getPeso() {
-		return peso;
+	public int getPesoEquipamineto() {
+		return pesoEquipamiento;
 	}
 
-	public void setPeso(int peso) {
-		this.peso = peso;
+	public void setPesoEquipamineto(int pesoEquipamiento) {
+		this.pesoEquipamiento = pesoEquipamiento;
 	}
-	  
 	  
 	
 	
