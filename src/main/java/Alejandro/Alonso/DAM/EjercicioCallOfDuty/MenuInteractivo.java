@@ -15,14 +15,16 @@ public class MenuInteractivo {
 
         int opcion;
         do {
-            System.out.println("\nMenú:");
+            System.err.println("\n-----Menú------");
             System.out.println("1. Mostrar Inventario");
             System.out.println("2. Añadir Arma Principal");
             System.out.println("3. Añadir Arma Secundaria");
             System.out.println("4. Equipar Accesorio");
             System.out.println("5. Desequipar Accesorio");
+            System.out.println("6. Equipar Equipamiento");
+            System.out.println("7. Desequipar Equipamiento");
             System.out.println("0. Salir");
-            System.out.print("Ingrese su opción: ");
+            System.out.print("Ingrese su opción: "); 
             opcion = scanner.nextInt();
 
             switch (opcion) {
@@ -59,11 +61,25 @@ public class MenuInteractivo {
                     String nombreDesEquipar = scanner.next();
                 	InventarioController.desequiparAccesorio(usuario, nombreDesEquipar);
                     break;
+                case 6:
+                	System.out.println("Añadir Equipamiento:");
+                    Equipamiento equipamiento = InventarioController.crearEquipamiento(scanner);
+
+                    if (equipamiento != null) {
+                        InventarioController.añadirEquipamiento(usuario, equipamiento);
+                    }
+                    break;
+                case 7:
+                    System.out.println("Desequipar equipamiento:");
+                    System.out.print("Ingrese el nombre del equipamiento que dese eliminar: ");
+                    String nombredesequipamiento = scanner.next();
+                	InventarioController.desequiparEquipamiento(usuario, nombredesequipamiento);
+                    break;
                 case 0:
-                    System.out.println("¡Hasta luego!");
+                    System.err.println("¡Hasta luego!");
                     break;
                 default:
-                    System.out.println("Opción no válida. Inténtelo de nuevo.");
+                    System.err.println("Opción no válida. Inténtelo de nuevo.");
             }
         } while (opcion != 0);
     }

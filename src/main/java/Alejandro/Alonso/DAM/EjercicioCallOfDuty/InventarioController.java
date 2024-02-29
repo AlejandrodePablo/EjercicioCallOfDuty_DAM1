@@ -27,6 +27,13 @@ public class InventarioController {
             if (accesorio != null) {
                 System.out.println("Nombre: " + accesorio.nombre + ", Peso: " + accesorio.peso);
             }
+            
+            System.out.println("\nEquipamientos:");
+            for (Equipamiento equipamiento : usuario.equipamiento) {
+                if (equipamiento != null) {
+                    System.out.println("Nombre: " + equipamiento.nombre + ", Peso: " + equipamiento.peso);
+                }
+            }
         }
     }
 
@@ -99,5 +106,37 @@ public class InventarioController {
             }
         }
         System.out.println("Accesorio no encontrado.");
+    }
+    
+    
+    public static Equipamiento crearEquipamiento(Scanner scanner) {
+        System.out.print("Ingrese el nombre del equipamiento: ");
+        String nombreEquipamiento = scanner.next();
+        System.out.print("Ingrese el peso del equipamiento: ");
+        int pesoEquipamiento = scanner.nextInt();
+
+        return new Equipamiento(nombreEquipamiento, pesoEquipamiento);
+    }
+
+    public static void añadirEquipamiento(Usuario usuario, Equipamiento equipamiento) {
+        for (int i = 0; i < usuario.equipamiento.length; i++) {
+            if (usuario.equipamiento[i] == null) {
+                usuario.equipamiento[i] = equipamiento;
+                System.out.println("Equipamiento añadido con éxito.");
+                return;
+            }
+        }
+        System.out.println("No puedes llevar más equipamiento.");
+    }
+
+    public static void desequiparEquipamiento(Usuario usuario, String nombreEquipamiento) {
+        for (int i = 0; i < usuario.equipamiento.length; i++) {
+            if (usuario.equipamiento[i] != null && usuario.equipamiento[i].nombre.equals(nombreEquipamiento)) {
+                usuario.equipamiento[i] = null;
+                System.out.println("Equipamiento desequipado con éxito.");
+                return;
+            }
+        }
+        System.out.println("Equipamiento no encontrado.");
     }
 }
