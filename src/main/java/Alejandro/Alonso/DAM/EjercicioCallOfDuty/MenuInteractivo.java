@@ -3,6 +3,7 @@ package Alejandro.Alonso.DAM.EjercicioCallOfDuty;
 import java.util.Scanner;
 
 public class MenuInteractivo {
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -15,72 +16,53 @@ public class MenuInteractivo {
 
         int opcion;
         do {
-            System.err.println("\n-----Menú------");
-            System.out.println("1. Mostrar Inventario");
-            System.out.println("2. Añadir Arma Principal");
-            System.out.println("3. Añadir Arma Secundaria");
-            System.out.println("4. Equipar Accesorio");
-            System.out.println("5. Desequipar Accesorio");
-            System.out.println("6. Equipar Equipamiento");
-            System.out.println("7. Desequipar Equipamiento");
-            System.out.println("0. Salir");
-            System.out.print("Ingrese su opción: "); 
+            mostrarMenu();
             opcion = scanner.nextInt();
-
-            switch (opcion) {
-                case 1:
-                    InventarioController.mostrarInventario(usuario);
-                    break;
-                case 2:
-                    System.out.println("Añadir Arma Principal:");
-                    ArmaPrincipal armaPrincipal = (ArmaPrincipal) InventarioController.crearArma(scanner);
-
-                    if (armaPrincipal != null) {
-                    	InventarioController.añadirArmaPrincipal(usuario, armaPrincipal);
-                    }
-                    break;
-                case 3:
-                    System.out.println("Añadir Arma Secundaria:");
-                    ArmaSecundaria armaSecundaria = (ArmaSecundaria) InventarioController.crearArma(scanner);
-
-                    if (armaSecundaria != null) {
-                    	InventarioController.añadirArmaSecundaria(usuario, armaSecundaria);
-                    }
-                    break;
-                case 4:
-                    System.out.println("Equipar Accesorio:");
-                    Accesorios accesorio = InventarioController.crearAccesorio(scanner);
-
-                    if (accesorio != null) {
-                    	InventarioController.equiparAccesorio(usuario, accesorio);
-                    }
-                    break;
-                case 5:
-                    System.out.println("Desequipar Accesorio:");
-                    System.out.print("Ingrese el nombre del accesorio a desequipar: ");
-                    String nombreDesEquipar = scanner.next();
-                	InventarioController.desequiparAccesorio(usuario, nombreDesEquipar);
-                    break;
-                case 6:
-                	System.out.println("Añadir Equipamiento:");
-                    Equipamiento equipamiento = InventarioController.crearEquipamiento(scanner);
-
-                    if (equipamiento != null) {
-                        InventarioController.añadirEquipamiento(usuario, equipamiento);
-                    }
-                    break;
-                case 7:
-                    System.out.println("Desequipar equipamiento:");
-                    System.out.print("Ingrese el nombre del equipamiento que dese eliminar: ");
-                    String nombredesequipamiento = scanner.next();
-                	InventarioController.desequiparEquipamiento(usuario, nombredesequipamiento);
-                    break;
-                case 0:
-                    System.err.println("¡Hasta luego!");
-                    break;
-                default:
-                    System.err.println("Opción no válida. Inténtelo de nuevo.");
-            }
+            gestionarOpcion(usuario, opcion, scanner);
         } while (opcion != 0);
+
+        System.err.println("¡Hasta luego!");
+        scanner.close();
+    }
+
+    private static void mostrarMenu() {
+        System.out.println("\n-----Menú------");
+        System.out.println("1. Mostrar Inventario");
+        System.out.println("2. Añadir Arma Principal");
+        System.out.println("3. Añadir Arma Secundaria");
+        System.out.println("4. Equipar Accesorio");
+        System.out.println("5. Desequipar Accesorio");
+        System.out.println("6. Equipar Equipamiento");
+        System.out.println("7. Desequipar Equipamiento");
+        System.out.println("0. Salir");
+        System.out.print("Ingrese su opción: ");
+    }
+
+    private static void gestionarOpcion(Usuario usuario, int opcion, Scanner scanner) {
+        switch (opcion) {
+            case 1:
+                InventarioController.mostrarInventario(usuario);
+                break;
+            case 2:
+                InventarioController.añadirArmaPrincipal(usuario, (ArmaPrincipal) InventarioController.crearArma(scanner));
+                break;
+            case 3:
+                InventarioController.añadirArmaSecundaria(usuario, (ArmaSecundaria) InventarioController.crearArma(scanner));
+                break;
+            case 4:
+                InventarioController.equiparAccesorio(usuario, InventarioController.crearAccesorio(scanner));
+                break;
+            case 5:
+                InventarioController.desequiparAccesorio(usuario, scanner.next());
+                break;
+            case 6:
+                InventarioController.añadirEquipamiento(usuario, InventarioController.crearEquipamiento(scanner));
+                break;
+            case 7:
+                InventarioController.desequiparEquipamiento(usuario, scanner.next());
+                break;
+            default:
+                System.err.println("Opción no válida. Inténtelo de nuevo.");
+        }
     }
 }

@@ -3,58 +3,125 @@ package Alejandro.Alonso.DAM.EjercicioCallOfDuty;
 import java.util.Scanner;
 
 public class InventarioController {
+
+	public static void mostrarInventario(Usuario usuario) {
+	    System.out.println("Inventario de " + usuario.nombre + ":");
+	    System.out.println("Espacio en mochila: " + usuario.espacioMochila);
+
+	    System.out.println("\nArmas Principales:");
+	    mostrarArmas(usuario.armasPrincipales);
+
+	    System.out.println("\nArmas Secundarias:");
+	    mostrarArmas(usuario.armasSecundarias);
+
+	    System.out.println("\nAccesorios:");
+	    mostrarAccesorios(usuario.accesorios);
+
+	    System.out.println("\nEquipamientos:");
+	    mostrarEquipamiento(usuario.equipamiento);
+	}
+
+	private static void mostrarArmas(Armas[] armas) {
+	    for (Armas arma : armas) {
+	        if (arma != null) {
+	            System.out.println("   Nombre: " + arma.nombre + ", Peso: " + arma.peso);
+	        }
+	    }
+	}
 	
-    public static void mostrarInventario(Usuario usuario) {
-        System.out.println("Inventario de " + usuario.nombre + ":");
-        System.out.println("Espacio en mochila: " + usuario.espacioMochila);
+	private static void mostrarAccesorios(Accesorios[] items) {
+	    for (Accesorios item : items) {
+	        if (item != null) {
+	            System.out.println("   Nombre: " + item.nombre + ", Peso: " + item.peso);
+	        }
+	    }
+	}
 
-        System.out.println("\nArmas Principales:");
-        for (ArmaPrincipal armaPrincipal : usuario.armasPrincipales) {
-            if (armaPrincipal != null) {
-                System.out.println("Nombre: " + armaPrincipal.nombre + ", Peso: " + armaPrincipal.peso);
+	private static void mostrarEquipamiento(Equipamiento[] items) {
+	    for (Equipamiento item : items) {
+	        if (item != null) {
+	            System.out.println("   Nombre: " + item.nombre + ", Peso: " + item.peso);
+	        }
+	    }
+	}
+	
+	
+    private static void mostrarArmas(String titulo, Armas[] armas) {
+        System.out.println("\n" + titulo + ":");
+        for (Armas arma : armas) {
+            if (arma != null) {
+                System.out.println("Nombre: " + arma.nombre + ", Peso: " + arma.peso);
             }
         }
+    }
 
-        System.out.println("\nArmas Secundarias:");
-        for (ArmaSecundaria armaSecundaria : usuario.armasSecundarias) {
-            if (armaSecundaria != null) {
-                System.out.println("Nombre: " + armaSecundaria.nombre + ", Peso: " + armaSecundaria.peso);
-            }
-        }
-
-        System.out.println("\nAccesorios:");
-        for (Accesorios accesorio : usuario.accesorios) {
+    private static void mostrarAccesorios(String titulo, Accesorios[] accesorios) {
+        System.out.println("\n" + titulo + ":");
+        for (Accesorios accesorio : accesorios) {
             if (accesorio != null) {
                 System.out.println("Nombre: " + accesorio.nombre + ", Peso: " + accesorio.peso);
             }
-            
-            System.out.println("\nEquipamientos:");
-            for (Equipamiento equipamiento : usuario.equipamiento) {
-                if (equipamiento != null) {
-                    System.out.println("Nombre: " + equipamiento.nombre + ", Peso: " + equipamiento.peso);
-                }
+        }
+    }
+
+    private static void mostrarEquipamientos(String titulo, Equipamiento[] equipamientos) {
+        System.out.println("\n" + titulo + ":");
+        for (Equipamiento equipamiento : equipamientos) {
+            if (equipamiento != null) {
+                System.out.println("Nombre: " + equipamiento.nombre + ", Peso: " + equipamiento.peso);
             }
         }
     }
 
     public static Armas crearArma(Scanner scanner) {
-        System.out.print("Ingrese el nombre del arma: ");
-        String nombreArma = scanner.next();
-        System.out.print("Ingrese el peso del arma: ");
-        int pesoArma = scanner.nextInt();
-        System.out.print("¿Es un arma principal o secundaria? (P/S): ");
-        char tipoArma = scanner.next().charAt(0);
+    	 System.out.print("Ingrese el nombre del arma: ");
+    	    String nombreArma = scanner.next();
+    	    System.out.print("Ingrese el peso del arma: ");
+    	    int pesoArma = scanner.nextInt();
 
-        if (tipoArma == 'P') {
-            return new ArmaPrincipal(nombreArma, pesoArma);
-        } else if (tipoArma == 'S') {
-            return new ArmaSecundaria(nombreArma, pesoArma);
+    	    char tipoArma;
+    	    do {
+    	        System.out.print("¿Es un arma principal o secundaria? (P/S): ");
+    	        tipoArma = scanner.next().charAt(0);
+
+    	        if (tipoArma != 'P' && tipoArma != 'S') {
+    	            System.out.println("Opción no válida. Inténtelo de nuevo.");
+    	        }
+    	    } while (tipoArma != 'P' && tipoArma != 'S');
+
+    	    if (tipoArma == 'P') {
+    	        return new ArmaPrincipal(nombreArma, pesoArma);
+    	    } else {
+    	        return new ArmaSecundaria(nombreArma, pesoArma);
+    	    }
+    }
+
+    public static void añadirArmaPrincipal(Usuario usuario, ArmaPrincipal armaPrincipal) {
+        if (usuario.espacioMochilaSuficiente(armaPrincipal.peso)) {
+            if (usuario.armasPrincipales[0] == null) {
+                usuario.armasPrincipales[0] = armaPrincipal;
+                System.out.println("Arma principal añadida con éxito.");
+            } else {
+                System.err.println("No puedes llevar más armas principales.");
+            }
         } else {
-            System.out.println("Opción no válida.");
-            return null;
+            System.err.println("No hay suficiente espacio en la mochila para añadir este arma.");
         }
     }
 
+    public static void añadirArmaSecundaria(Usuario usuario, ArmaSecundaria armaSecundaria) {
+        if (usuario.espacioMochilaSuficiente(armaSecundaria.peso)) {
+            if (usuario.armasSecundarias[0] == null) {
+                usuario.armasSecundarias[0] = armaSecundaria;
+                System.out.println("Arma secundaria añadida con éxito.");
+            } else {
+                System.err.println("No puedes llevar más armas secundarias.");
+            }
+        } else {
+            System.err.println("No hay suficiente espacio en la mochila para añadir esta arma.");
+        }
+    }
+    
     public static Accesorios crearAccesorio(Scanner scanner) {
         System.out.print("Ingrese el nombre del accesorio: ");
         String nombreAccesorio = scanner.next();
@@ -64,50 +131,38 @@ public class InventarioController {
         return new Accesorios(nombreAccesorio, pesoAccesorio);
     }
 
-    public static void añadirArmaPrincipal(Usuario usuario, ArmaPrincipal armaPrincipal) {
-        for (int i = 0; i < usuario.armasPrincipales.length; i++) {
-            if (usuario.armasPrincipales[i] == null) {
-                usuario.armasPrincipales[i] = armaPrincipal;
-                System.out.println("Arma principal añadida con éxito.");
-                return;
-            }
-        }
-        System.out.println("No puedes llevar más armas principales.");
-    }
-
-    public static void añadirArmaSecundaria(Usuario usuario, ArmaSecundaria armaSecundaria) {
-        for (int i = 0; i < usuario.armasSecundarias.length; i++) {
-            if (usuario.armasSecundarias[i] == null) {
-                usuario.armasSecundarias[i] = armaSecundaria;
-                System.out.println("Arma secundaria añadida con éxito.");
-                return;
-            }
-        }
-        System.out.println("No puedes llevar más armas secundarias.");
-    }
-
     public static void equiparAccesorio(Usuario usuario, Accesorios accesorio) {
-        for (int i = 0; i < usuario.accesorios.length; i++) {
-            if (usuario.accesorios[i] == null) {
-                usuario.accesorios[i] = accesorio;
-                System.out.println("Accesorio equipado con éxito.");
-                return;
+        if (usuario.espacioMochilaSuficiente(accesorio.peso)) {
+            for (int i = 0; i < usuario.accesorios.length; i++) {
+                if (usuario.accesorios[i] == null) {
+                    usuario.accesorios[i] = accesorio;
+                    System.out.println("Accesorio equipado con éxito.");
+                    return;
+                }
             }
+            System.err.println("No puedes equipar más accesorios.");
+        } else {
+            System.err.println("No hay suficiente espacio en la mochila para equipar este accesorio.");
         }
-        System.out.println("No puedes equipar más accesorios.");
     }
 
+    
     public static void desequiparAccesorio(Usuario usuario, String nombreAccesorio) {
+        boolean encontrado = false;
+        System.out.println("Dime el nombre del accesorio a desequipar");
         for (int i = 0; i < usuario.accesorios.length; i++) {
             if (usuario.accesorios[i] != null && usuario.accesorios[i].nombre.equals(nombreAccesorio)) {
                 usuario.accesorios[i] = null;
                 System.out.println("Accesorio desequipado con éxito.");
-                return;
+                encontrado = true;
+                break;
             }
         }
-        System.out.println("Accesorio no encontrado.");
+
+        if (!encontrado) {
+            System.out.println("Accesorio no encontrado.");
+        }
     }
-    
     
     public static Equipamiento crearEquipamiento(Scanner scanner) {
         System.out.print("Ingrese el nombre del equipamiento: ");
@@ -119,24 +174,34 @@ public class InventarioController {
     }
 
     public static void añadirEquipamiento(Usuario usuario, Equipamiento equipamiento) {
-        for (int i = 0; i < usuario.equipamiento.length; i++) {
-            if (usuario.equipamiento[i] == null) {
-                usuario.equipamiento[i] = equipamiento;
-                System.out.println("Equipamiento añadido con éxito.");
-                return;
+        if (usuario.espacioMochilaSuficiente(equipamiento.peso)) {
+            for (int i = 0; i < usuario.equipamiento.length; i++) {
+                if (usuario.equipamiento[i] == null) {
+                    usuario.equipamiento[i] = equipamiento;
+                    System.out.println("Equipamiento añadido con éxito.");
+                    return;
+                }
             }
+            System.err.println("No puedes llevar más equipamiento.");
+        } else {
+            System.err.println("No hay suficiente espacio en la mochila para añadir este equipamiento.");
         }
-        System.out.println("No puedes llevar más equipamiento.");
     }
-
     public static void desequiparEquipamiento(Usuario usuario, String nombreEquipamiento) {
+        boolean encontrado = false;
+        System.out.println("Dime el nombre del equipamiento que dese eliminar");
         for (int i = 0; i < usuario.equipamiento.length; i++) {
             if (usuario.equipamiento[i] != null && usuario.equipamiento[i].nombre.equals(nombreEquipamiento)) {
                 usuario.equipamiento[i] = null;
                 System.out.println("Equipamiento desequipado con éxito.");
-                return;
+                encontrado = true;
+                break;
             }
         }
-        System.out.println("Equipamiento no encontrado.");
+
+        if (!encontrado) {
+            System.out.println("Equipamiento no encontrado.");
+        }
     }
+
 }
