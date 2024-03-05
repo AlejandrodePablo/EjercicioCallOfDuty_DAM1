@@ -1,17 +1,17 @@
 package Alejandro.Alonso.DAM.EjercicioCallOfDuty;
 
 public class Armas {
-	 String nombre;
-	    int peso;
+	String nombre;
+	int peso;
 
-	 public Armas(String nombre, int peso) {
-		 this.nombre = nombre;
-	     this.peso = peso;
-	 }
-	 
-	 public Armas() {
+	public Armas(String nombre, int peso) {
+		this.nombre = nombre;
+		this.peso = peso;
+	}
 
-	    }
+	public Armas() {
+
+	}
 
 	public String getNombre() {
 		return nombre;
@@ -28,6 +28,5 @@ public class Armas {
 	public void setPeso(int peso) {
 		this.peso = peso;
 	}
-	  
-	  
+
 }
