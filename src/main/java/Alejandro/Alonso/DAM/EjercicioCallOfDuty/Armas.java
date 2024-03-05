@@ -8,6 +8,10 @@ public class Armas {
 		 this.nombre = nombre;
 	     this.peso = peso;
 	 }
+	 
+	 public Armas() {
+
+	    }
 
 	public String getNombre() {
 		return nombre;
