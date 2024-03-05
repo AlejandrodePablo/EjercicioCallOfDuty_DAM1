@@ -8,6 +8,13 @@ public class Armas {
 		this.nombre = nombre;
 		this.peso = peso;
 	}
+<<<<<<< Updated upstream
+=======
+
+	public Armas() {
+
+	}
+>>>>>>> Stashed changes
 
 	public String getNombre() {
 		return nombre;

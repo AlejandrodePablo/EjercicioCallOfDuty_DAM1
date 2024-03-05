@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< Updated upstream
 Built-By: Borja
 Build-Jdk: 17.0.8
+=======
+Built-By: Alex
+Build-Jdk: 19
+>>>>>>> Stashed changes
 Created-By: Maven Integration for Eclipse
 
