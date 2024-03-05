@@ -21,7 +21,6 @@ public class MenuInteractivo {
 			gestionarOpcion(usuario, opcion, scanner);
 		} while (opcion != 0);
 
-		System.err.println("¡Hasta luego!");
 		scanner.close();
 	}
 
@@ -39,6 +38,9 @@ public class MenuInteractivo {
 
 	private static void gestionarOpcion(Usuario usuario, int opcion, Scanner scanner) {
 		switch (opcion) {
+		case 0:
+			System.err.println("¡Hasta luego!");
+			break;
 		case 1:
 			InventarioController.mostrarInventario(usuario);
 			break;
